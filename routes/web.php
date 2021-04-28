@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', 'PostController');
+Route::resource('/post-comment', 'PostCommentController');
+Route::match(['get', 'post'], '/post-comment/fetch-comments', 'PostCommentController@fetchComments')->name('post-comment.fetch-comments');
